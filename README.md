@@ -37,6 +37,7 @@ These rules are purely matters of style and are quite subjective.
 * [jsx-conditional-newline](docs/rules/jsx-conditional-newline.md): Require a newline when a conditional expression is used within JSX.
 * [jsx-conditional-parens](docs/rules/jsx-conditional-parens.md): Require no parens when JSX is used within a conditional.
 * [jsx-curly-spacing-opinionated](docs/rules/jsx-curly-spacing-opinionated): Require particular spacing rules that cannot be defined using jsx-curly-spacing inside eslint-plugin-react.
+* [jsx-enforce-prop-usage](docs/rules/jsx-enforce-prop-usage): Enforce how props are used. Can help to enforce extracting inline function calls to variables.
 
 # Contributing
 Contributions are always welcome!.
