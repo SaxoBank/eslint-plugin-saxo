@@ -33,7 +33,7 @@ module.exports = {
                 }
 
                 if (node.value.type === 'Literal') {
-                    // allow string literals as attributes
+                    // allow any string literals as attributes
                     return;
                 }
 
@@ -43,6 +43,10 @@ module.exports = {
                             // allow variables with appropriate
                             return;
                         }
+                    }
+                    if (node.value.expression.type === 'TemplateLiteral') {
+                        // allow any template literals
+                        return;
                     }
                 }
 

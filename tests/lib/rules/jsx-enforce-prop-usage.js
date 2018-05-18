@@ -59,6 +59,13 @@ const option = { className: 'a' };
 />
 `,
         },
+        {
+            code: `
+<SettingOption
+    className={\`allow template literals\`}
+/>
+`,
+        },
     ],
     invalid: [
         {
