@@ -49,12 +49,11 @@ module.exports = {
                         // allow any template literals
                         return;
                     }
-                }
-
-                if (node.value.expression.type === 'MemberExpression' && node.value.expression.property.type === 'Identifier') {
-                    if (isAllowedName(node.value.expression.property.name)) {
-                        // allow objects keys with appropriate name
-                        return;
+                    if (node.value.expression.type === 'MemberExpression' && node.value.expression.property.type === 'Identifier') {
+                        if (isAllowedName(node.value.expression.property.name)) {
+                            // allow objects keys with appropriate name
+                            return;
+                        }
                     }
                 }
 
