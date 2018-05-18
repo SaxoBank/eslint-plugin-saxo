@@ -12,7 +12,11 @@ The following patterns are considered problems:
 ```js
 /*eslint saxo/jsx-enforce-prop-usage: "error"*/
 
-<Sheet className={classNames('grid grid--y grid--fit-fill-fit', className)}>
+<div className={classNames('abc', {a: true})} />
+<div className={true ? 'a' : 'v'} />
+
+let foo = 'a b c';
+<div className={foo}/>
 ```
 
 The following patterns are not considered warnings:
@@ -20,6 +24,24 @@ The following patterns are not considered warnings:
 ```js
 /*eslint saxo/jsx-enforce-prop-usage: "error"*/
 
-const classes = classNames('grid grid--y grid--fit-fill-fit', this.props.className);
-<Sheet className={classes}/>
+<div className="inline-classes defined-with-string"/>
+
+const classes = classNames('abc', {a: true});
+<div className={classes}/>
+
+let fooClasses = 'a b c';
+<div className={fooClasses}/>
+
+const className = 'a b c';
+<div className={className}/>
+
+let fooClassName = 'a b c';
+<div className={fooClassName}/>
+
+const option = { className: 'a' };
+<div className={option.className}/>
+
+<div className={\`allow template literals\`}/>
+
+<div className={constants.DIV_CLASS}/>
 ```
