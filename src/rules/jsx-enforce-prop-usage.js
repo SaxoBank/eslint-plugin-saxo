@@ -33,16 +33,16 @@ module.exports = {
                 if (node.value.type === 'JSXExpressionContainer') {
                     if (node.value.expression.type === 'Identifier') {
                         // TODO: refactor
-                        if (node.value.expression.name === 'classes') {
+                        if (node.value.expression.name === 'classes' || node.value.expression.name === 'className') {
                             return;
                         }
-                        if (node.value.expression.name.indexOf('Classes') > -1) {
+                        if (node.value.expression.name.indexOf('Classes') > -1 || node.value.expression.name.indexOf('ClassName') > -1) {
                             return;
                         }
                     }
                 }
 
-                context.report(node, `${attributeNameToCheck} attribute value must be string or variable with classes name or ending with Classes`);
+                context.report(node, 'className attribute value must be string or variable which name ends with "classes" or "className"');
             },
         };
     },

@@ -13,6 +13,7 @@ const parserOptions = {
         jsx: true,
     },
 };
+const expectedErrorMessage = 'className attribute value must be string or variable which name ends with "classes" or "className"';
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -38,19 +39,38 @@ let fooClasses = 'a b c';
 <div className={fooClasses}/>;
 `,
         },
+        {
+            code: `
+const className = 'a b c';
+<div className={className}/>;
+`,
+        },
+        {
+            code: `
+let fooClassName = 'a b c';
+<div className={fooClassName}/>;
+`,
+        },
     ],
     invalid: [
         {
             code: `
 <div className={classNames('abc', {a: true})} />;
 `,
-            errors: [{ message: 'className attribute value must be string or variable with classes name or ending with Classes' }],
+            errors: [{ message: expectedErrorMessage }],
         },
         {
             code: `
-<div className={true ? 'a' : 'v'} />;;
+<div className={true ? 'a' : 'v'} />;
 `,
-            errors: [{ message: 'className attribute value must be string or variable with classes name or ending with Classes' }],
+            errors: [{ message: expectedErrorMessage }],
+        },
+        {
+            code: `
+let foo = 'a b c';
+<div className={foo}/>;
+`,
+            errors: [{ message: expectedErrorMessage }],
         },
     ],
 });
