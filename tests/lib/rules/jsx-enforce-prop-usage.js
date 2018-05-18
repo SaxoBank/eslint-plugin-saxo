@@ -66,6 +66,13 @@ const option = { className: 'a' };
 />
 `,
         },
+        {
+            code: `
+<SettingOption
+    className={constants.SPLITTER_HANDLE_CLASS}
+/>
+`,
+        },
     ],
     invalid: [
         {

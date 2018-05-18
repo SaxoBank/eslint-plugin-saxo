@@ -10,7 +10,8 @@ const isAllowedName = (name = '') => (
     name === 'classes' ||
     name === 'className' ||
     name.indexOf('Classes') > -1 ||
-    name.indexOf('ClassName') > -1
+    name.indexOf('ClassName') > -1 ||
+    name.indexOf('CLASS') > -1
 );
 
 module.exports = {
