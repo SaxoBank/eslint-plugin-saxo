@@ -51,6 +51,14 @@ let fooClassName = 'a b c';
 <div className={fooClassName}/>;
 `,
         },
+        {
+            code: `
+const option = { className: 'a' };
+<SettingOption
+    className={option.className}
+/>
+`,
+        },
     ],
     invalid: [
         {

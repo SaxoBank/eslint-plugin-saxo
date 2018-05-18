@@ -6,6 +6,13 @@ const attributeNameToCheck = 'className';
 // Rule Definition
 // ------------------------------------------------------------------------------
 
+const isAllowedName = (name = '') => (
+    name === 'classes' ||
+    name === 'className' ||
+    name.indexOf('Classes') > -1 ||
+    name.indexOf('ClassName') > -1
+);
+
 module.exports = {
     meta: {
         docs: {
@@ -32,13 +39,17 @@ module.exports = {
 
                 if (node.value.type === 'JSXExpressionContainer') {
                     if (node.value.expression.type === 'Identifier') {
-                        // TODO: refactor
-                        if (node.value.expression.name === 'classes' || node.value.expression.name === 'className') {
+                        if (isAllowedName(node.value.expression.name)) {
+                            // allow variables with appropriate
                             return;
                         }
-                        if (node.value.expression.name.indexOf('Classes') > -1 || node.value.expression.name.indexOf('ClassName') > -1) {
-                            return;
-                        }
+                    }
+                }
+
+                if (node.value.expression.type === 'MemberExpression' && node.value.expression.property.type === 'Identifier') {
+                    if (isAllowedName(node.value.expression.property.name)) {
+                        // allow objects keys with appropriate name
+                        return;
                     }
                 }
 
