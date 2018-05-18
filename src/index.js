@@ -15,6 +15,7 @@ module.exports = {
                 '@saxo/saxo/jsx-conditional-newline': 'error',
                 '@saxo/saxo/jsx-conditional-parens': 'error',
                 '@saxo/saxo/jsx-curly-spacing-opinionated': 'error',
+                '@saxo/saxo/jsx-enforce-prop-usage': 'warn',
             },
         },
     },
