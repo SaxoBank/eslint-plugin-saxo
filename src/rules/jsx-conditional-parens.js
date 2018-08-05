@@ -1,6 +1,6 @@
 'use strict';
 
-const astUtils = require('eslint/lib/ast-utils');
+const { isParenthesised } = require('../astUtils');
 
 module.exports = {
     create(context) {
@@ -30,7 +30,7 @@ module.exports = {
             LogicalExpression(node) {
                 if (node.operator === '&&' &&
                     node.right.type === 'JSXElement' &&
-                    astUtils.isParenthesised(sourceCode, node.right)
+                    isParenthesised(sourceCode, node.right)
                 ) {
                     report(node.right);
                 }

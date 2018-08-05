@@ -1,7 +1,6 @@
 'use strict';
 
-const astUtils = require('eslint/lib/ast-utils');
-const { getNodeIndent } = require('../astUtils');
+const { getNodeIndent, isParenthesised } = require('../astUtils');
 
 module.exports = {
     create(context) {
@@ -33,7 +32,7 @@ module.exports = {
          */
         function getFixerFunction(node, needed) {
             // no support for indenting when parens are used
-            if (astUtils.isParenthesised(sourceCode, node)) {
+            if (isParenthesised(sourceCode, node)) {
                 return;
             }
 

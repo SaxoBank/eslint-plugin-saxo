@@ -25,3 +25,20 @@ exports.getNodeIndent = function getNodeIndent(sourceCode, node) {
     const indent = regExp.exec(src);
     return indent ? indent[0].length : 0;
 };
+
+/**
+ * Takes from the eslint codebase. https://github.com/eslint/eslint/blob/master/lib/util/ast-utils.js
+ * Determines if a node is surrounded by parentheses.
+ * @param {SourceCode} sourceCode The ESLint source code object
+ * @param {ASTNode} node The node to be checked.
+ * @returns {boolean} True if the node is parenthesised.
+ * @private
+ */
+exports.isParenthesised = function isParenthesised(sourceCode, node) {
+    const previousToken = sourceCode.getTokenBefore(node);
+    const nextToken = sourceCode.getTokenAfter(node);
+
+    return Boolean(previousToken && nextToken) &&
+        previousToken.value === '(' && previousToken.range[1] <= node.range[0] &&
+        nextToken.value === ')' && nextToken.range[0] >= node.range[1];
+};
