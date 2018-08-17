@@ -13,7 +13,7 @@ const parserOptions = {
         jsx: true,
     },
 };
-const topLevelDir = 'SaxoTrader/Source/Iit.SaxoTrader.App/js/';
+const topLevelDir = 'SampleProject/Source/SampleProject.App/js/';
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -23,7 +23,7 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-conditional-indent', rule, {
     valid: [
         {
-            filename: 'C:\\Projects\\SaxoTrader\\Source\\Iit.SaxoTrader.App\\js\\src\\modules\\initialWorkspaceChoice\\session\\session.jsx',
+            filename: 'C:\\Projects\\SampleProject\\Source\\SampleProject.App\\js\\src\\modules\\sampleModule\\component\\component.jsx',
             options: [{ topLevelDir }],
             code: `
 describe(() => {
@@ -32,15 +32,15 @@ describe(() => {
 `,
         },
         {
-            filename: 'C:\\Projects\\SaxoTrader\\Source\\Iit.SaxoTrader.App\\js\\src\\modules\\initialWorkspaceChoice\\session\\session.spec.jsx',
+            filename: 'C:\\Projects\\SampleProject\\Source\\SampleProject.App\\js\\src\\modules\\sampleModule\\component\\component.spec.jsx',
             code: `
-describe('src/modules/initialWorkspaceChoice/session/session', () => {
+describe('src/modules/sampleModule/component/component', () => {
     it('should be valid for spec file with expected windows path in the description', () => {})
 })
 `,
         },
         {
-            filename: '/some/dir/SaxoTrader/Source/Iit.SaxoTrader.App/js/src/modules/initialWorkspaceChoice/session/session.jsx',
+            filename: '/some/dir/SampleProject/Source/SampleProject.App/js/src/modules/sampleModule/component/component.jsx',
             code: `
 describe(() => {
     it('should be valid for non spec file with unix path', () => {})
@@ -48,17 +48,17 @@ describe(() => {
 `,
         },
         {
-            filename: '/some/dir/SaxoTrader/Source/Iit.SaxoTrader.App/js/src/modules/initialWorkspaceChoice/session/session.spec.jsx',
+            filename: '/some/dir/SampleProject/Source/SampleProject.App/js/src/modules/sampleModule/component/component.spec.jsx',
             code: `
-describe('src/modules/initialWorkspaceChoice/session/session', () => {
+describe('src/modules/sampleModule/component/component', () => {
     it('should be valid for spec file with expected unix path in the description', () => {})
 })
 `,
         },
         {
-            filename: 'C:\\Projects\\SaxoTrader\\Source\\Iit.SaxoTrader.App\\js\\src\\modules\\initialWorkspaceChoice\\session\\session.spec.jsx',
+            filename: 'C:\\Projects\\SampleProject\\Source\\SampleProject.App\\js\\src\\modules\\sampleModule\\component\\component.spec.jsx',
             code: `
-describe('src/modules/initialWorkspaceChoice/session/session', () => {
+describe('src/modules/sampleModule/component/component', () => {
     describe('anything', () => {
         it('should allow anything in the nested describe', () => {})
     })
@@ -68,41 +68,41 @@ describe('src/modules/initialWorkspaceChoice/session/session', () => {
     ],
     invalid: [
         {
-            filename: 'C:\\Projects\\SaxoTrader\\Source\\Iit.SaxoTrader.App\\js\\src\\modules\\initialWorkspaceChoice\\session\\session.spec.jsx',
+            filename: 'C:\\Projects\\SampleProject\\Source\\SampleProject.App\\js\\src\\modules\\sampleModule\\component\\component.spec.jsx',
             code: `
 describe('src/modules/incorrect/directory/and/file', () => {
     it('should throw error for unit test description not matching path', () => {})
 })
 `,
             output: `
-describe('src/modules/initialWorkspaceChoice/session/session', () => {
+describe('src/modules/sampleModule/component/component', () => {
     it('should throw error for unit test description not matching path', () => {})
 })
 `,
             errors: [
                 {
                     message: 'First argument of describe() needs to be path to tested file, ' +
-                        'expected=[src/modules/initialWorkspaceChoice/session/session], ' +
+                        'expected=[src/modules/sampleModule/component/component], ' +
                         'got=[src/modules/incorrect/directory/and/file]',
                 },
             ],
         },
         {
-            filename: '/some/dir/SaxoTrader/Source/Iit.SaxoTrader.App/js/src/modules/initialWorkspaceChoice/session/session.spec.jsx',
+            filename: '/some/dir/SampleProject/Source/SampleProject.App/js/src/modules/sampleModule/component/component.spec.jsx',
             code: `
 describe('src/modules/incorrect/directory/and/file', () => {
     it('should throw error for unit test description not matching path', () => {})
 })
 `,
             output: `
-describe('src/modules/initialWorkspaceChoice/session/session', () => {
+describe('src/modules/sampleModule/component/component', () => {
     it('should throw error for unit test description not matching path', () => {})
 })
 `,
             errors: [
                 {
                     message: 'First argument of describe() needs to be path to tested file, ' +
-                        'expected=[src/modules/initialWorkspaceChoice/session/session], ' +
+                        'expected=[src/modules/sampleModule/component/component], ' +
                         'got=[src/modules/incorrect/directory/and/file]',
                 },
             ],
