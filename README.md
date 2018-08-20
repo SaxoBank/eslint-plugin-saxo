@@ -38,6 +38,7 @@ These rules are purely matters of style and are quite subjective.
 * [jsx-conditional-parens](docs/rules/jsx-conditional-parens.md): Require no parens when JSX is used within a conditional.
 * [jsx-curly-spacing-opinionated](docs/rules/jsx-curly-spacing-opinionated.md): Require particular spacing rules that cannot be defined using jsx-curly-spacing inside eslint-plugin-react.
 * [jsx-enforce-prop-usage](docs/rules/jsx-enforce-prop-usage.md): Enforce how props are used. Can help to enforce extracting inline function calls to variables.
+* [jsx-enforce-spec-describe](docs/rules/jsx-enforce-spec-describe.md): Enforces *.spec.* unit tests top level describe method to have first argument matching path of file under test.
 
 # Contributing
 Contributions are always welcome!.
