@@ -8,6 +8,12 @@ const rules = fs
     .map((f) => f.replace(/\.js$/, ''));
 
 module.exports = {
+    processors: {
+        '.snap': {
+            preprocess: (source) => [source],
+            postprocess: (messages) => messages[0].filter((message) => message.ruleId.indexOf('snapshot') !== -1),
+        },
+    },
     rules: rules.reduce((ruleObj, rule) =>
         Object.assign(ruleObj, { [rule]: require(`./rules/${rule}`) })
         , {}),
