@@ -12,7 +12,7 @@ cy.viewport('iphone-6');
 ```
 
 ```js
-/*eslint saxo/cy-viewport-presets: ["error"]*/
+/*eslint saxo/cy-viewport-presets: "error"*/
 cy.viewport('phone');
 ```
 
