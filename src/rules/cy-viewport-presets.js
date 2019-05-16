@@ -8,16 +8,24 @@ module.exports = {
         },
         schema: [
             {
-                type: 'array',
+                type: 'object',
+                properties: {
+                    allowed: {
+                        type: 'array',
+                        default: [],
+                    },
+                },
+                additionalProperties: false,
             },
         ],
         messages: {
-            unSupportedPresets: 'Only use supported viewport presets: {{allowedPresets}}',
+            unSupportedPresets: 'Only use supported viewport presets: {{presets}}',
             noSupportedPresets: 'Do not use presets when setting cypress viewport',
         },
     },
     create(context) {
-        const presets = context.options[0] || [];
+        const options = context.options[0] || {};
+        const allowed = options.allowed || [];
 
         return {
             CallExpression(node) {
@@ -26,16 +34,16 @@ module.exports = {
                     node.callee.property.name === 'viewport' &&
                     typeof node.arguments[0].value === 'string'
                 ) {
-                    if (presets.length === 0) {
+                    if (allowed.length === 0) {
                         context.report({
                             node,
                             messageId: 'noSupportedPresets',
                         });
-                    } else if (presets.indexOf(node.arguments[0].value) < 0) {
+                    } else if (allowed.indexOf(node.arguments[0].value) < 0) {
                         context.report({
                             node,
                             messageId: 'unSupportedPresets',
-                            data: { allowedPresets: presets.join(', ') },
+                            data: { presets: allowed.join(', ') },
                         });
                     }
                 }

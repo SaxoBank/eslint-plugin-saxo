@@ -24,13 +24,13 @@ ruleTester.run('cy-viewport-presets', rule, {
         code: 'yc.viewport("phone")',
     }, {
         code: 'cy.viewport("phone")',
-        options: [['phone', 'tablet', 'desktop']],
+        options: [{ allowed: ['phone', 'tablet', 'desktop'] }],
     }, {
         code: 'cy.viewport("tablet")',
-        options: [['tablet']],
+        options: [{ allowed: ['tablet'] }],
     }, {
         code: 'cy.viewport(1600, 1160)',
-        options: [['tablet']],
+        options: [{ allowed: ['tablet'] }],
     }, {
         code: 'cy.viewport(1600, 1160)',
     }, {
@@ -38,10 +38,10 @@ ruleTester.run('cy-viewport-presets', rule, {
     }],
     invalid: [{
         code: 'cy.viewport("rocket")',
-        options: [['phone', 'tablet', 'desktop']],
+        options: [{ allowed: ['phone', 'tablet', 'desktop'] }],
         errors: [{
             messageId: 'unSupportedPresets',
-            data: { allowedPresets: 'phone, tablet, desktop' },
+            data: { presets: 'phone, tablet, desktop' },
         }],
     }, {
         code: 'cy.viewport("phone")',

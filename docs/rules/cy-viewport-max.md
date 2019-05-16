@@ -6,7 +6,6 @@ This rule enforces a limit on cypress viewport size. It does not account for ide
 ## Rule Details
 
 Examples of incorrect code for this rule:
-
 ```js
 /*eslint saxo/cy-viewport-max: ["error", { maxHeight: 1600, maxWidth: 1160 }]*/
 cy.viewport(1600, 1260);
@@ -23,7 +22,6 @@ cy.viewport(1600, 1700);
 ```
 
 Examples of correct code for this rule:
-
 ```js
 /*eslint saxo/cy-viewport-max: ["error", { maxHeight: 1600, maxWidth: 1160 }]*/
 cy.viewport(1600, 1160);

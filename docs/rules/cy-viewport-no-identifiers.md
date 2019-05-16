@@ -6,7 +6,6 @@ This rule disallows the use of identifiers when setting cypress viewport.
 ## Rule Details
 
 Examples of incorrect code for this rule:
-
 ```js
 /*eslint saxo/cy-viewport-no-identifiers: "error"*/
 cy.viewport(height, 1260);
@@ -24,7 +23,6 @@ cy.viewport('macbook-13', orientation);
 
 
 Examples of correct code for this rule:
-
 ```js
 /*eslint saxo/cy-viewport-no-identifiers: "error"*/
 cy.viewport('macbook-13', 'landscape', options);

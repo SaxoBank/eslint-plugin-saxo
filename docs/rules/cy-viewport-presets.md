@@ -6,21 +6,8 @@ This rule enforces the use of specific presets when setting cypress viewport, or
 ## Rule Details
 
 Examples of incorrect code for this rule:
-
 ```js
-/*eslint saxo/cy-viewport-presets: ["error", ['phone', 'tablet', 'desktop']]*/
-cy.viewport('phone', 'landscape');
-```
-
-```js
-/*eslint saxo/cy-viewport-presets: ["error", ['tablet']]*/
-cy.viewport('tablet');
-```
-
-Examples of correct code for this rule:
-
-```js
-/*eslint saxo/cy-viewport-presets: ["error", ['phone', 'tablet', 'desktop']]*/
+/*eslint saxo/cy-viewport-presets: ["error", { allowed: ['phone', 'tablet', 'desktop'] }*/
 cy.viewport('iphone-6');
 ```
 
@@ -29,5 +16,19 @@ cy.viewport('iphone-6');
 cy.viewport('phone');
 ```
 
+Examples of correct code for this rule:
+```js
+/*eslint saxo/cy-viewport-presets: ["error", { allowed: ['phone', 'tablet', 'desktop'] }*/
+cy.viewport('phone', 'landscape');
+```
+
+```js
+/*eslint saxo/cy-viewport-presets: ["error", { allowed: ['tablet'] }*/
+cy.viewport('tablet');
+```
+
+
 ## Options
-This rule has an array option containing the allowed presets. If none are defined no presets will be allowed.
+This rule has an object option, containing one property. 
+
+'allowed' contains the presets to enforce. If the array is empty, presets are disallowed.
