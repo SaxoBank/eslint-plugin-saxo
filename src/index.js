@@ -21,7 +21,7 @@ module.exports = {
         recommended: {
             rules: {
                 '@saxo/saxo/cy-viewport-max': ['error', { maxHeight: 1600, maxWidth: 1160 }],
-                '@saxo/saxo/cy-viewport-presets': ['error', ['phone', 'tablet', 'desktop']],
+                '@saxo/saxo/cy-viewport-presets': ['error', { allowed: ['phone', 'tablet', 'desktop'] }],
                 '@saxo/saxo/cy-viewport-no-identifiers': 'error',
                 '@saxo/saxo/jsx-conditional-indent': 'error',
                 '@saxo/saxo/jsx-conditional-newline': 'error',
