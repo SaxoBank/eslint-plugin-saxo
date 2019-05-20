@@ -15,6 +15,7 @@ module.exports = {
         return {
             CallExpression(node) {
                 if (
+                    node.callee.object &&
                     node.callee.object.name === 'cy' &&
                     node.callee.property.name === 'viewport' &&
                     (node.arguments[0].type === 'Identifier' ||

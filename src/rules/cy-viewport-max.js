@@ -21,7 +21,7 @@ module.exports = {
             },
         ],
         messages: {
-            tooLargeViewport: 'Do not use viewport sizes larger than {{height}}x{{width}}',
+            tooLargeViewport: 'Do not use viewport sizes larger than {{width}}x{{height}}',
             tooHighViewport: 'Do not use a viewport height larger than {{height}}',
             tooWideViewport: 'Do not use a viewport width larger than {{width}}',
         },
@@ -34,28 +34,29 @@ module.exports = {
         return {
             CallExpression(node) {
                 if (
+                    node.callee.object &&
                     node.callee.object.name === 'cy' &&
                     node.callee.property.name === 'viewport' &&
                     node.arguments.length > 1 &&
                     typeof node.arguments[0].value !== 'string'
                 ) {
-                    if (maxHeight && maxWidth && (node.arguments[0].value > maxHeight || node.arguments[1].value > maxWidth)) {
+                    if (maxWidth && maxHeight && (node.arguments[0].value > maxWidth || node.arguments[1].value > maxHeight)) {
                         context.report({
                             node,
                             messageId: 'tooLargeViewport',
-                            data: { height: maxHeight, width: maxWidth },
+                            data: { height: maxWidth, width: maxHeight },
                         });
-                    } else if (maxHeight && node.arguments[0].value > maxHeight) {
-                        context.report({
-                            node,
-                            messageId: 'tooHighViewport',
-                            data: { height: maxHeight },
-                        });
-                    } else if (maxWidth && node.arguments[1].value > maxWidth) {
+                    } else if (maxWidth && node.arguments[0].value > maxWidth) {
                         context.report({
                             node,
                             messageId: 'tooWideViewport',
                             data: { width: maxWidth },
+                        });
+                    } else if (maxHeight && node.arguments[1].value > maxHeight) {
+                        context.report({
+                            node,
+                            messageId: 'tooHighViewport',
+                            data: { height: maxHeight },
                         });
                     }
                 }
