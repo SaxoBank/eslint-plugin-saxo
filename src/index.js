@@ -16,7 +16,7 @@ module.exports = {
     },
     rules: rules.reduce((ruleObj, rule) =>
         Object.assign(ruleObj, { [rule]: require(`./rules/${rule}`) })
-    , {}),
+        , {}),
     configs: {
         recommended: {
             rules: {
