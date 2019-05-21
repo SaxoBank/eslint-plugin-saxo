@@ -23,6 +23,8 @@ ruleTester.run('cy-viewport-presets', rule, {
     valid: [{
         code: 'yc.viewport("phone")',
     }, {
+        code: 'cy.viewport()',
+    }, {
         code: 'cy.viewport("phone")',
         options: [{ allowed: ['phone', 'tablet', 'desktop'] }],
     }, {

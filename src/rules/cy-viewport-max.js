@@ -44,7 +44,7 @@ module.exports = {
                         context.report({
                             node,
                             messageId: 'tooLargeViewport',
-                            data: { height: maxWidth, width: maxHeight },
+                            data: { height: maxHeight, width: maxWidth },
                         });
                     } else if (maxWidth && node.arguments[0].value > maxWidth) {
                         context.report({

@@ -33,7 +33,7 @@ module.exports = {
                     node.callee.object &&
                     node.callee.object.name === 'cy' &&
                     node.callee.property.name === 'viewport' &&
-                    typeof node.arguments[0].value === 'string'
+                    node.arguments[0] && typeof node.arguments[0].value === 'string'
                 ) {
                     if (allowed.length === 0) {
                         context.report({

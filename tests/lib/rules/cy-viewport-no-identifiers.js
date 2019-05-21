@@ -25,6 +25,8 @@ ruleTester.run('cy-viewport-no-identifiers', rule, {
     valid: [{
         code: 'yc.viewport(height, width)',
     }, {
+        code: 'cy.viewport()',
+    }, {
         code: 'cy.viewport(1650, 1200)',
     }, {
         code: 'cy.viewport(1650, 1200, options)',

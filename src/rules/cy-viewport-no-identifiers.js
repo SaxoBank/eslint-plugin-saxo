@@ -18,8 +18,8 @@ module.exports = {
                     node.callee.object &&
                     node.callee.object.name === 'cy' &&
                     node.callee.property.name === 'viewport' &&
-                    (node.arguments[0].type === 'Identifier' ||
-                    (node.arguments.length > 1 && node.arguments[1].type === 'Identifier'))
+                    ((node.arguments[0] && node.arguments[0].type === 'Identifier') ||
+                    (node.arguments[1] && node.arguments[1].type === 'Identifier'))
                 ) {
                     context.report({
                         node,
