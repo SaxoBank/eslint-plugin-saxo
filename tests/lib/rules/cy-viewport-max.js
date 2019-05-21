@@ -24,6 +24,8 @@ ruleTester.run('cy-viewport-max', rule, {
         code: 'yc.viewport(1750, 1400)',
         options: [{ maxWidth: 1700, maxHeight: 1300 }],
     }, {
+        code: 'cy.viewport()',
+    }, {
         code: 'cy.viewport("phone")',
         options: [{ maxWidth: 1700, maxHeight: 1300 }],
     }, {
@@ -47,28 +49,28 @@ ruleTester.run('cy-viewport-max', rule, {
         options: [{ maxWidth: 1300, maxHeight: 700 }],
         errors: [{
             messageId: 'tooLargeViewport',
-            data: { height: 1300, width: 700 },
+            data: { width: 1300, height: 700 },
         }],
     }, {
         code: 'cy.viewport(1600, 1160)',
         options: [{ maxWidth: 8000, maxHeight: 20 }],
         errors: [{
             messageId: 'tooLargeViewport',
-            data: { height: 8000, width: 20 },
+            data: { width: 8000, height: 20 },
         }],
     }, {
         code: 'cy.viewport(width, 1200)',
         options: [{ maxWidth: 1600, maxHeight: 1160 }],
         errors: [{
             messageId: 'tooLargeViewport',
-            data: { height: 1600, width: 1160 },
+            data: { width: 1600, height: 1160 },
         }],
     }, {
         code: 'cy.viewport(1700, height)',
         options: [{ maxWidth: 1600, maxHeight: 1160 }],
         errors: [{
             messageId: 'tooLargeViewport',
-            data: { height: 1600, width: 1160 },
+            data: { width: 1600, height: 1160 },
         }],
     }, {
         code: 'cy.viewport(1600, 1160)',

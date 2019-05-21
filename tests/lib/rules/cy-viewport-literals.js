@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------
 
 const { RuleTester } = require('eslint');
-const rule = require('../../../src/rules/cy-viewport-no-identifiers');
+const rule = require('../../../src/rules/cy-viewport-literals');
 const parserOptions = {
     sourceType: 'module',
     ecmaVersion: 6,
@@ -21,9 +21,11 @@ const noIdentifiersError = { messageId: 'noIdentifiers' };
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({ parserOptions });
-ruleTester.run('cy-viewport-no-identifiers', rule, {
+ruleTester.run('cy-viewport-literals', rule, {
     valid: [{
         code: 'yc.viewport(height, width)',
+    }, {
+        code: 'cy.viewport()',
     }, {
         code: 'cy.viewport(1650, 1200)',
     }, {
@@ -36,13 +38,19 @@ ruleTester.run('cy-viewport-no-identifiers', rule, {
         code: 'cy.viewport("macbook-13", "landscape", options)',
     }],
     invalid: [{
-        code: 'cy.viewport(height, 900)',
+        code: 'cy.viewport(width, 900)',
         errors: [noIdentifiersError],
     }, {
-        code: 'cy.viewport(1600, width)',
+        code: 'cy.viewport(1600, height)',
         errors: [noIdentifiersError],
     }, {
-        code: 'cy.viewport(height, width)',
+        code: 'cy.viewport(object.property)',
+        errors: [noIdentifiersError],
+    }, {
+        code: 'cy.viewport("preset", object.property)',
+        errors: [noIdentifiersError],
+    }, {
+        code: 'cy.viewport(width, height)',
         errors: [noIdentifiersError],
     }, {
         code: 'cy.viewport(preset)',
