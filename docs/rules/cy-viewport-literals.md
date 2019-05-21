@@ -1,7 +1,7 @@
-# Disallow identifiers as cypress viewport parameters
-# cy-viewport-no-identifiers
+# Enforce literals as cypress viewport parameters
+# cy-viewport-literals
 
-This rule disallows the use of identifiers when setting cypress viewport.
+This rule enforces literals when setting cypress viewport.
 
 ## Rule Details
 
