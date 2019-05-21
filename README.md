@@ -40,6 +40,9 @@ These rules are purely matters of style and are quite subjective.
 * [jsx-enforce-prop-usage](docs/rules/jsx-enforce-prop-usage.md): Enforce how props are used. Can help to enforce extracting inline function calls to variables.
 * [jsx-enforce-spec-describe](docs/rules/jsx-enforce-spec-describe.md): Enforces *.spec.* unit tests top level describe method to have first argument matching path of file under test.
 * [clean-jest-snapshots](docs/rules/clean-jest-snapshots.md): Checks for code smells in jest snapshots.
+* [cy-viewport-max](docs/rules/cy-viewport-max.md): Enforces a limit on cypress viewport.
+* [cy-viewport-no-identifiers](docs/rules/cy-viewport-no-identifiers.md): Disallows identifiers when setting cypress viewport.
+* [cy-viewport-presets](docs/rules/cy-viewport-presets.md): Enforces a specific set of cypress viewport presets.
 
 # Contributing
 Contributions are always welcome!.
