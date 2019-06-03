@@ -12,7 +12,7 @@ module.exports = {
     create(context) {
         return {
             ExpressionStatement(node) {
-                if (node.expression.callee.property.name === 'pause' && getObjectName(node.expression.callee) === 'cy') {
+                if (node.expression.callee.type === 'MemberExpression' && node.expression.callee.property.name === 'pause' && getObjectName(node.expression.callee) === 'cy') {
                     context.report({
                         node,
                         message: 'Do not use cy.pause()',
