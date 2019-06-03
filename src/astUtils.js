@@ -42,3 +42,12 @@ exports.isParenthesised = function isParenthesised(sourceCode, node) {
         previousToken.value === '(' && previousToken.range[1] <= node.range[0] &&
         nextToken.value === ')' && nextToken.range[0] >= node.range[1];
 };
+
+// Gets the top level object name of a chain.
+exports.getObjectName = (node) => {
+    if (node.object.type === 'Identifier') {
+        return node.object.name;
+    }
+
+    return exports.getObjectName(node.object.callee);
+};

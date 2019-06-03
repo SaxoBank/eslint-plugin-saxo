@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-saxo",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "author": "Saxo Bank",
   "description": "ESLint rules created for Saxo Bank",
   "main": "src/index.js",
