@@ -44,10 +44,17 @@ exports.isParenthesised = function isParenthesised(sourceCode, node) {
 };
 
 // Gets the top level object name of a chain.
-exports.getObjectName = (node) => {
-    if (node.object.type === 'Identifier') {
-        return node.object.name;
-    }
+exports.firstMemberExpression = (node) => {
+    switch (node.type) {
+        case 'MemberExpression':
+            // one.two.three
+            // ^~~~~~~
+            return exports.firstMemberExpression(node.object);
 
-    return exports.getObjectName(node.object.callee);
+        case 'CallExpression':
+            // one.two.three()
+            // ^~~~~~~~~~~~~
+            return exports.firstMemberExpression(node.callee);
+    }
+    return node;
 };

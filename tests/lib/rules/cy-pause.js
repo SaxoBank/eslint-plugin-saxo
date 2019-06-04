@@ -6,16 +6,19 @@ const rule = require('../../../src/rules/cy-pause');
 const parserOptions = {
     sourceType: 'module',
     ecmaVersion: 6,
-    ecmaFeatures: {
-        jsx: true,
-    },
 };
 
 const doNotUseCyPauseError = { message: 'Do not use cy.pause()' };
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('cy-pause', rule, {
-    valid: [],
+    valid: [{
+        code: 'other.pause()',
+    }, {
+        code: 'properties.pause',
+    }, {
+        code: 'pause()',
+    }],
     invalid: [{
         code: 'cy.pause()',
         errors: [doNotUseCyPauseError],
