@@ -2,8 +2,8 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.4.3] - 2019-06-03
-- Add cy-pause to prevent cy.pause() from being committed to master
+## [1.5.0] - 2019-06-18
+- Add no-cy-pause rule
 
 ## [1.4.2] - 2019-05-21
 - Fix cy-viewport rules to not break on calls without arguments
