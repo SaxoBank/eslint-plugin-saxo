@@ -23,7 +23,7 @@ module.exports = {
                 '@saxo/saxo/cy-viewport-max': ['error', { maxWidth: 1600, maxHeight: 1160 }],
                 '@saxo/saxo/cy-viewport-presets': ['error', { allowed: ['phone', 'tablet', 'desktop'] }],
                 '@saxo/saxo/cy-viewport-literals': 'error',
-                '@saxo/saxo/cy-pause': 'error',
+                '@saxo/saxo/no-cy-pause': 'error',
                 '@saxo/saxo/jsx-conditional-indent': 'error',
                 '@saxo/saxo/jsx-conditional-newline': 'error',
                 '@saxo/saxo/jsx-conditional-parens': 'error',
