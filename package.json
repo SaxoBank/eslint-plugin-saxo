@@ -23,6 +23,7 @@
   "bugs": "https://github.com/saxobank/eslint-plugin-saxo/issues",
   "dependencies": {},
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
     "istanbul": "^0.4.4",
     "mocha": "^6.1.4"
