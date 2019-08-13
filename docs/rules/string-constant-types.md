@@ -7,28 +7,36 @@ This is important when creating enums of string values, as omitting even one typ
 
 ## Examples of incorrect code for this rule:
 
+❌ Exported string constants that aren't typed
+
 ```js
-/* eslint saxo/string-constant-types: "error" */
 // @flow
+/* eslint saxo/string-constant-types: "error" */
 export const foo = 'foo'
 ```
 
 ## Examples of correct code for this rule:
 
+✅ Exported string constants that aren't typed, but are in a non flow annotated file
+
 ```js
-/* eslint saxo/string-constant-types: "error" */
 /* eslint-disable flowtype/require-valid-file-annotation */
+/* eslint saxo/string-constant-types: "error" */
 export const foo = 'foo'
 ```
 
+✅ Already typed exported constants
+
 ```js
-/* eslint saxo/string-constant-types: "error" */
 // @flow
+/* eslint saxo/string-constant-types: "error" */
 export const foo: 'foo' = 'foo'
 ```
 
-```js
-/* eslint saxo/string-constant-types: "error" */
+✅ Non exported constants
 
+```js
+// @flow
+/* eslint saxo/string-constant-types: "error" */
 const foo = 'foo'
 ```
