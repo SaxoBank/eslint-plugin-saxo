@@ -45,7 +45,7 @@ module.exports = {
 
                 context.report({
                     node: declaration,
-                    message: 'String literals should be typed',
+                    message: `String literals should be typed. Expected to be of the form \`${declaration.id}: ${declaration.init.raw}\``,
                     fix(fixer) {
                         return fixer.insertTextAfter(
                             declaration.id,
