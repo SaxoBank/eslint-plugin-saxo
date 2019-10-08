@@ -79,6 +79,14 @@ function* caller() {
 }
 `,
             errors: [useYieldStarError],
+            output: `
+// Yielding a saga to the middleware with plain yield
+function* delegate() {}
+
+function* caller() {
+    yield* delegate();
+}
+`,
         },
     ],
 });
