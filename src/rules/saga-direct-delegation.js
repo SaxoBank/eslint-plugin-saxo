@@ -1,0 +1,56 @@
+'use strict';
+
+const message = 'Use `yield*` for calling other sagas; it preserves the call stack';
+
+module.exports = {
+    meta: {
+        fixable: 'code',
+    },
+    create(context) {
+        const generators = {};
+        const yieldExpressionsMaybeToGenerator = [];
+
+        return {
+            FunctionDeclaration(node) {
+                if (node.generator) {
+                    generators[node.id.name] = node;
+                }
+            },
+            YieldExpression(node) {
+                const isYieldStar = node.delegate;
+                const { type, callee } = node.argument;
+
+                if (isYieldStar) {
+                    return;
+                }
+                if (type !== 'CallExpression' || callee.type !== 'Identifier') {
+                    return;
+                }
+
+                yieldExpressionsMaybeToGenerator.push(node);
+            },
+            'Program:exit': () => {
+                yieldExpressionsMaybeToGenerator.forEach((node) => {
+                    const { callee } = node.argument;
+
+                    if (!generators[callee.name]) {
+                        return;
+                    }
+
+                    context.report({
+                        node,
+                        message,
+                        fix: (fixer) => addStarToYieldExpression(context, fixer, node),
+                    });
+                });
+            },
+        };
+    },
+};
+
+function addStarToYieldExpression(context, fixer, node) {
+    const nodeText = context.getSourceCode().getText(node);
+    const withoutYield = nodeText.substr('yield'.length);
+
+    return fixer.replaceText(node, `yield*${withoutYield}`);
+}
