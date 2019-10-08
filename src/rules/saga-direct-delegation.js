@@ -1,10 +1,11 @@
 'use strict';
 
-const message = 'Use `yield*` for calling other sagas; it preserves the call stack';
-
 module.exports = {
     meta: {
         fixable: 'code',
+        messages: {
+            useYieldStar: 'Use `yield*` for calling other sagas; it preserves the call stack',
+        },
     },
     create(context) {
         const generators = {};
@@ -39,7 +40,7 @@ module.exports = {
 
                     context.report({
                         node,
-                        message,
+                        messageId: 'useYieldStar',
                         fix: (fixer) => addStarToYieldExpression(context, fixer, node),
                     });
                 });
