@@ -8,8 +8,6 @@ const parserOptions = {
     ecmaVersion: 6,
 };
 
-const stringLiteralsShouldBeTypedError = { message: 'String literals should be typed' };
-
 const ruleTester = new RuleTester({ parserOptions, parser: 'babel-eslint' });
 ruleTester.run('string-constant-types', rule, {
     valid: [{
@@ -47,6 +45,6 @@ const nonExportedConstant = 'bar'
 // @flow
 export const foo = 'foo'
 `,
-        errors: [stringLiteralsShouldBeTypedError],
+        errors: [{ message: 'String literals should be typed. Expected to be of the form `foo: \'foo\'`' }],
     }],
 });
