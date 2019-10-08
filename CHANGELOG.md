@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.7.0] - ????-??-??
+- Enforce using yield* to delegate to other sagas (saga-direct-delegation)
+
 ## [1.6.0] - 2019-08-12
 - Enforce exported string constants are typed (string-constant-types)
 
