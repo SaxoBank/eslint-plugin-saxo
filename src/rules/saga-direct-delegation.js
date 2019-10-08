@@ -2,9 +2,14 @@
 
 module.exports = {
     meta: {
+        docs: {
+            description: 'Enforce using yield* to delegate to other sagas; it preserves the call stack',
+            category: 'Best Practices',
+            recommended: true,
+        },
         fixable: 'code',
         messages: {
-            useYieldStar: 'Use `yield*` for calling other sagas; it preserves the call stack',
+            useYieldStar: 'Use `yield*` for delegating to other sagas; it preserves the call stack',
         },
     },
     create(context) {
