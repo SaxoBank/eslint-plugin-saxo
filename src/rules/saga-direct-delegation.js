@@ -5,7 +5,7 @@ module.exports = {
         docs: {
             description: 'Enforces delegating to sagas directly using yield*',
             category: 'ECMAScript 6',
-            recommended: true,
+            recommended: false,
         },
         fixable: 'code',
         messages: {

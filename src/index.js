@@ -24,7 +24,6 @@ module.exports = {
                 '@saxo/saxo/cy-viewport-presets': ['error', { allowed: ['phone', 'tablet', 'desktop'] }],
                 '@saxo/saxo/cy-viewport-literals': 'error',
                 '@saxo/saxo/no-cy-pause': 'error',
-                '@saxo/saxo/saga-direct-delegation': 'error',
                 '@saxo/saxo/string-constant-types': 'error',
                 '@saxo/saxo/jsx-conditional-indent': 'error',
                 '@saxo/saxo/jsx-conditional-newline': 'error',
