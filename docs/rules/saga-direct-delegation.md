@@ -3,7 +3,7 @@
 
 This rule enforces that delegation to sagas is done directly using `yield*`, rather than indirectly by plain `yield` of the returned iterator to the saga middleware.
 
-This has the benefit of maintaining the delegator (caller) on the call stack, which aids debugging and gives better error stack traces.
+This has the benefit of maintaining the delegator (caller) on the call stack, which aids debugging and gives better error stack traces. When a saga is being run by the middleware, both delegation methods are otherwise equivalent.
 
 The rule is autofixable.
 
@@ -58,3 +58,6 @@ function* caller() {
     yield* delegate();
 }
 ```
+
+## When not to use it
+If you are using an [effect middleware](https://redux-saga.js.org/docs/advanced/Testing.html#effectmiddlwares), for example to test your sagas.
