@@ -20,9 +20,9 @@ function* caller() {
 }
 ```
 
-## Examples of correct code for this rule:
+## Examples of incorrect code that this rule does not currently detect:
 
-✅ Delegations not using `yield*`, where the callee is imported from from another file
+👎 Delegations not using `yield*`, where the callee is imported from from another file
 
 ```js
 /* eslint saxo/saga-direct-delegation: "error" */
@@ -33,7 +33,7 @@ function* caller() {
 }
 ```
 
-✅ Delegations not using `yield*`, where the callee is not accessed by identifier
+👎 Delegations not using `yield*`, where the callee is not accessed by identifier
 
 ```js
 /* eslint saxo/saga-direct-delegation: "error" */
@@ -45,6 +45,8 @@ function* caller() {
     yield obj.delegate();
 }
 ```
+
+## Examples of correct code for this rule:
 
 ✅ Delegations already using `yield*`
 
