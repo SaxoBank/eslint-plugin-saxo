@@ -5,7 +5,7 @@ This rule enforces that delegation to sagas is done directly using `yield*`, rat
 
 This has the benefit of maintaining the delegator (caller) on the call stack, which aids debugging and gives better error stack traces. When a saga is being run by the middleware, both delegation methods are otherwise equivalent.
 
-The rule is autofixable.
+The rule is autofixable. You should read this page in full before autofixing an existing codebase.
 
 ## Examples of incorrect code for this rule:
 
@@ -61,3 +61,8 @@ function* caller() {
 
 ## When not to use it
 If you are using an [effect middleware](https://redux-saga.js.org/docs/advanced/Testing.html#effectmiddlwares), for example to test your sagas.
+
+## Implications on unit testing of using `yield*`
+When a saga delegates to a nested saga using `yield*`, it behaves as one saga. Tests that manually drive such sagas step-by-step using `next()` will not receive the nested saga, so no longer have the opportunity to "step over" them (by discarding), or to pass a mock value to the following call to `next()`. As an alternative, mock the nested saga at the start of the test. For new tests, consider techniques other than manually driving sagas.
+
+A `yield*` expression can only delegate to a generator (or other iterable object). This demands that generator functions be mocked using generator functions. When existing code is changed to use `yield*` instead of `yield`, tests which mock generators using plain functions must be updated.
