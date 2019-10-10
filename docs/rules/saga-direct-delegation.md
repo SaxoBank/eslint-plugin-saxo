@@ -1,7 +1,7 @@
 # Enforce using `yield*` to delegate to other sagas
 # saga-direct-delegation
 
-This rule enforces that delegation to sagas is done directly using `yield*`, rather than indirectly by plain `yield` of the returned iterator to the saga middleware.
+This rule enforces that delegation to sagas is done directly using `yield*`, rather than indirectly by plain `yield` of the returned generator to the saga middleware.
 
 This has the benefit of maintaining the delegator (caller) on the call stack, which aids debugging and gives better error stack traces. When a saga is being run by the middleware, both delegation methods are otherwise equivalent.
 
