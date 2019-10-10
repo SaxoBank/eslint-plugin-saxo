@@ -44,6 +44,10 @@ These rules are purely matters of style and are quite subjective.
 * [cy-viewport-literals](docs/rules/cy-viewport-literals.md): Enforces the use of literals when setting cypress viewport.
 * [cy-viewport-presets](docs/rules/cy-viewport-presets.md): Enforces a specific set of cypress viewport presets.
 
+### ECMAScript 6
+These rules relate to ES6, also known as ES2015.
+* [saga-direct-delegation](docs/rules/saga-direct-delegation.md): Enforces delegating to sagas directly using `yield*`.
+
 # Contributing
 Contributions are always welcome!.
 

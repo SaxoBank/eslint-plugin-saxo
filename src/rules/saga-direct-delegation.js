@@ -3,8 +3,8 @@
 module.exports = {
     meta: {
         docs: {
-            description: 'Enforce using yield* to delegate to other sagas; it preserves the call stack',
-            category: 'Best Practices',
+            description: 'Enforces delegating to sagas directly using yield*',
+            category: 'ECMAScript 6',
             recommended: true,
         },
         fixable: 'code',
