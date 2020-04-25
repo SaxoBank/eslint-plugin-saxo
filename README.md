@@ -43,6 +43,7 @@ These rules are purely matters of style and are quite subjective.
 * [cy-viewport-max](docs/rules/cy-viewport-max.md): Enforces a limit on cypress viewport.
 * [cy-viewport-literals](docs/rules/cy-viewport-literals.md): Enforces the use of literals when setting cypress viewport.
 * [cy-viewport-presets](docs/rules/cy-viewport-presets.md): Enforces a specific set of cypress viewport presets.
+* [logevent-literal-max-len](docs/rules/logevent-literal-max-len.md): Ensures that logged event does not exceed 50 characters.
 
 # Contributing
 Contributions are always welcome!.
