@@ -20,7 +20,7 @@ const topLevelDir = 'SampleProject/Source/SampleProject.App/js/';
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({ parserOptions });
-ruleTester.run('jsx-conditional-indent', rule, {
+ruleTester.run('jsx-enforce-spec-describe', rule, {
     valid: [
         {
             filename: 'C:\\Projects\\SampleProject\\Source\\SampleProject.App\\js\\src\\modules\\sampleModule\\component\\component.jsx',
