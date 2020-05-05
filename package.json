@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-saxo",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "author": "Saxo Bank",
   "description": "ESLint rules created for Saxo Bank",
   "main": "src/index.js",
@@ -26,7 +26,8 @@
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
     "istanbul": "^0.4.4",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "prettier": "^2.0.5"
   },
   "engines": {
     "node": ">=4"
