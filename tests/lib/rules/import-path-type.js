@@ -25,37 +25,14 @@ ruleTester.run('import-path-type', rule, {
             filename:
                 'C:\\Projects\\SampleProject\\src\\frontend\\modules\\sampleModule\\component\\component.jsx',
             options: [
-                [
-                    {
-                        paths: ['src/frontend/app'],
-                        parts: 3,
-                    },
-                    {
-                        paths: ['src/frontend/modules'],
-                        parts: 4,
-                    },
-                ],
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
             ],
             code: `
 import * as otherComponent from './otherComponent';
 import component from 'src/frontend/modules/otherModule/component';
-import { sampleOtherComponent } from 'src/frontend/components/otherModule/component';
-`,
-            output: '',
-            errors: [
-                {
-                    message: '',
-                },
-            ],
-        },
-        {
-            filename:
-                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\sampleModule\\component\\component.jsx',
-            options: [[]],
-            code: `
-import * as otherComponent from '../../otherModule/Component';
-import component from 'src/frontend/modules/sampleModule/component';
-import { sampleOtherComponent } from 'src/frontend/components/sampleModule/component/test';
 `,
         },
     ],
@@ -64,12 +41,10 @@ import { sampleOtherComponent } from 'src/frontend/components/sampleModule/compo
             filename:
                 'C:\\Projects\\SampleProject\\src\\frontend\\modules\\sampleModule\\component\\component.jsx',
             options: [
-                [
-                    {
-                        paths: ['src/frontend/modules'],
-                        parts: 4,
-                    },
-                ],
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
             ],
             code: `
 import * as otherComponent from '../../otherModule/Component';
@@ -84,10 +59,10 @@ import { sampleOtherComponent } from 'src/frontend/components/sampleModule/compo
             errors: [
                 {
                     message:
-                        'Path should be \'src/frontend/modules/otherModule/Component\'',
+                        "Path should be 'src/frontend/modules/otherModule/Component'",
                 },
                 {
-                    message: 'Path should be \'./\'',
+                    message: "Path should be './'",
                 },
             ],
         },
@@ -95,12 +70,10 @@ import { sampleOtherComponent } from 'src/frontend/components/sampleModule/compo
             filename:
                 'C:\\Projects\\SampleProject\\src\\frontend\\app\\desktop\\component\\component.jsx',
             options: [
-                [
-                    {
-                        paths: ['src/frontend/app'],
-                        parts: 3,
-                    },
-                ],
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 3,
+                },
             ],
             code: `
 import * as tabletComponent from 'src/frontend/app/tablet/Component';
@@ -112,39 +85,11 @@ import component from 'src/frontend/modules/otherModule/component';
 `,
             errors: [
                 {
-                    message: 'Path should be \'../../tablet/Component\'',
+                    message: "Path should be '../../tablet/Component'",
                 },
                 {
                     message:
-                        'Path should be \'src/frontend/modules/otherModule/component\'',
-                },
-            ],
-        },
-        {
-            filename: 'src\\frontend\\app\\desktop\\component\\component.jsx',
-            options: [
-                [
-                    {
-                        paths: ['src/frontend/app'],
-                        parts: 3,
-                    },
-                ],
-            ],
-            code: `
-import * as tabletComponent from 'src/frontend/app/tablet/Component';
-import component from '../../../modules/otherModule/component';
-`,
-            output: `
-import * as tabletComponent from '../../tablet/Component';
-import component from 'src/frontend/modules/otherModule/component';
-`,
-            errors: [
-                {
-                    message: 'Path should be \'../../tablet/Component\'',
-                },
-                {
-                    message:
-                        'Path should be \'src/frontend/modules/otherModule/component\'',
+                        "Path should be 'src/frontend/modules/otherModule/component'",
                 },
             ],
         },
@@ -152,12 +97,10 @@ import component from 'src/frontend/modules/otherModule/component';
             filename:
                 '/drives/c/projects/sample/src/frontend/app/desktop/component/component.jsx',
             options: [
-                [
-                    {
-                        paths: ['src/frontend/app'],
-                        parts: 3,
-                    },
-                ],
+                {
+                    cwd: '/drives/c/projects/sample',
+                    parts: 3,
+                },
             ],
             code: `
 import * as tabletComponent from 'src/frontend/app/tablet/Component';
@@ -169,11 +112,11 @@ import component from 'src/frontend/modules/otherModule/component';
 `,
             errors: [
                 {
-                    message: 'Path should be \'../../tablet/Component\'',
+                    message: "Path should be '../../tablet/Component'",
                 },
                 {
                     message:
-                        'Path should be \'src/frontend/modules/otherModule/component\'',
+                        "Path should be 'src/frontend/modules/otherModule/component'",
                 },
             ],
         },

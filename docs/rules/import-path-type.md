@@ -7,12 +7,9 @@ The rule accepts an array of option. Example:
 ```json
 "saxo/import-path-type": [
     "error",
-    [
-      {
-        "paths": ['src/frontend/modules'],
-        "parts": 4,
-      }    
-    ]
+    {
+      "parts": 4,
+    }    
 ],
 ```
 
@@ -28,12 +25,9 @@ The following patterns are considered problems:
 /*
 "saxo/jsx-enforce-spec-describe": [
     "error",
-    [
-        {
-            paths: ['src/frontend/modules'],
-            parts: 4,
-        }
-    ]
+    {
+      "parts": 4,
+    }    
 ],
 */
 
@@ -52,19 +46,13 @@ The following patterns are not considered warnings:
 /*
 "saxo/jsx-enforce-spec-describe": [
     "error",
-    [
-        {
-            paths: ['src/frontend/modules'],
-            parts: 4,
-        }
-    ]
+    {
+      "parts": 4,
+    }
 ],
 */
 
 // for file location: 'C:\Projects\SampleProject\src\frontend\modules\sampleModule\component\component.jsx',
 import * as otherComponent from 'src/frontend/modules/otherModule/Component';
 import component from './';
-
-// for file location: 'C:\Projects\SampleProject\src\frontend\apps\desktop\app.jsx',
-import * as otherComponent from 'src/frontend/app/desktop/Component';
 ```

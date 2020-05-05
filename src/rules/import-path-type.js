@@ -10,63 +10,42 @@ module.exports = {
         },
         schema: [
             {
-                type: 'array',
-                items: {
-                    type: 'object',
-                    properties: {
-                        parts: {
-                            type: 'number',
-                        },
-                        paths: {
-                            type: 'array',
-                            items: {
-                                type: 'string',
-                            },
-                        },
+                type: 'object',
+                properties: {
+                    parts: {
+                        type: 'number',
                     },
-                    additionalProperties: false,
+                    cwd: {
+                        type: 'string',
+                    },
                 },
+                additionalProperties: false,
             },
         ],
         messages: {
-            incorrectPath: 'Path should be \'{{expectedPath}}\'',
+            incorrectPath: "Path should be '{{expectedPath}}'",
         },
         fixable: true,
     },
     create(context) {
-        const rules = context.options[0];
+        const parts = context.options[0].parts;
 
         return {
             ImportDeclaration(node) {
-                let fileName = context.getFilename().replace(/\\/g, '/');
+                let cwd = context.options[0].cwd || context.getCwd();
+                let fileName = path
+                    .relative(cwd, context.getFilename())
+                    .replace(/\\/g, '/');
 
-                let ruleParts;
-                rules.forEach(({ paths, parts }) => {
-                    paths.forEach((rulePath) => {
-                        if (fileName.indexOf(rulePath) >= 0) {
-                            ruleParts = parts;
-                            fileName = fileName.slice(
-                                fileName.indexOf(rulePath)
-                            );
-                        }
-                    });
-                });
-
-                if (ruleParts == null) {
-                    return;
-                }
                 const dirName = path.dirname(fileName);
 
                 // the base at which outside of this it should be absolute and inside it should be relative
-                const baseDir = dirName
-                    .split('/')
-                    .slice(0, ruleParts)
-                    .join('/');
+                const baseDir = dirName.split('/').slice(0, parts).join('/');
 
                 const importPath = node.source.value;
-                const resolvedImportPath = importPath.startsWith('.') ?
-                    path.join(dirName, importPath).replace(/\\/g, '/') :
-                    importPath;
+                const resolvedImportPath = importPath.startsWith('.')
+                    ? path.join(dirName, importPath).replace(/\\/g, '/')
+                    : importPath;
 
                 let expectedPath = importPath;
 
