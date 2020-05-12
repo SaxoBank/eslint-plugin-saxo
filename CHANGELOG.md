@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.8.1] - 2020-05-12
+- Fix bug in import-path-type if importing from a directory that starts with the current one
+
 ## [1.8.0] - 2020-05-04
 - Add new import-path-type rule 
 
