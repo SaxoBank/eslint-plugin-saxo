@@ -37,6 +37,33 @@ import component from 'src/frontend/modules/otherModule/component';
         },
         {
             filename:
+                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\sampleModule\\component\\component.jsx',
+            options: [
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
+            ],
+            code: `
+import * as otherComponent from '..';
+`,
+        },
+        {
+            filename:
+                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\sampleModule\\component.jsx',
+            options: [
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
+            ],
+            code: `
+import * as otherComponent from '.';
+import component from 'src/frontend/modules/otherModule/component';
+`,
+        },
+        {
+            filename:
                 'C:\\Projects\\SampleProject\\src\\frontend\\modules\\orange\\foo.js',
             options: [
                 {
@@ -66,7 +93,7 @@ import { sampleOtherComponent } from 'src/frontend/components/sampleModule/compo
 `,
             output: `
 import * as otherComponent from 'src/frontend/modules/otherModule/Component';
-import component from './';
+import component from '.';
 import { sampleOtherComponent } from 'src/frontend/components/sampleModule/component/test';
 `,
             errors: [
@@ -75,7 +102,7 @@ import { sampleOtherComponent } from 'src/frontend/components/sampleModule/compo
                         'Path should be \'src/frontend/modules/otherModule/Component\'',
                 },
                 {
-                    message: 'Path should be \'./\'',
+                    message: 'Path should be \'.\'',
                 },
             ],
         },
@@ -155,5 +182,47 @@ import bar from 'src/frontend/modules/orangejuice/bar';
                 },
             ],
         },
-    ],
+        {
+            filename:
+                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\sampleModule\\component\\component.jsx',
+            options: [
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
+            ],
+            code: `
+import * as otherComponent from 'src/frontend/modules/sampleModule';
+`,
+            output: `
+import * as otherComponent from '..';
+`,
+            errors: [{
+                message:
+                    'Path should be \'..\'',
+            }],
+
+        },
+        {
+            filename:
+                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\sampleModule\\component.jsx',
+            options: [
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
+            ],
+            code: `
+import * as otherComponent from 'src/frontend/modules/sampleModule';
+`,
+
+            output: `
+import * as otherComponent from '.';
+`,
+            errors: [{
+                message:
+                    'Path should be \'.\'',
+
+            }],
+        }],
 });
