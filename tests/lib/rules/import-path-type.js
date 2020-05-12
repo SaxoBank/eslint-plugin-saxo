@@ -35,6 +35,19 @@ import * as otherComponent from './otherComponent';
 import component from 'src/frontend/modules/otherModule/component';
 `,
         },
+        {
+            filename:
+                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\orange\\foo.js',
+            options: [
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
+            ],
+            code: `
+import bar from 'src/frontend/modules/orangejuice/bar';
+`,
+        },
     ],
     invalid: [
         {
@@ -59,10 +72,10 @@ import { sampleOtherComponent } from 'src/frontend/components/sampleModule/compo
             errors: [
                 {
                     message:
-                        "Path should be 'src/frontend/modules/otherModule/Component'",
+                        'Path should be \'src/frontend/modules/otherModule/Component\'',
                 },
                 {
-                    message: "Path should be './'",
+                    message: 'Path should be \'./\'',
                 },
             ],
         },
@@ -85,11 +98,11 @@ import component from 'src/frontend/modules/otherModule/component';
 `,
             errors: [
                 {
-                    message: "Path should be '../../tablet/Component'",
+                    message: 'Path should be \'../../tablet/Component\'',
                 },
                 {
                     message:
-                        "Path should be 'src/frontend/modules/otherModule/component'",
+                        'Path should be \'src/frontend/modules/otherModule/component\'',
                 },
             ],
         },
@@ -112,11 +125,33 @@ import component from 'src/frontend/modules/otherModule/component';
 `,
             errors: [
                 {
-                    message: "Path should be '../../tablet/Component'",
+                    message: 'Path should be \'../../tablet/Component\'',
                 },
                 {
                     message:
-                        "Path should be 'src/frontend/modules/otherModule/component'",
+                        'Path should be \'src/frontend/modules/otherModule/component\'',
+                },
+            ],
+        },
+        {
+            filename:
+                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\orange\\foo.js',
+            options: [
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
+            ],
+            code: `
+import bar from '../orangejuice/bar';
+`,
+            output: `
+import bar from 'src/frontend/modules/orangejuice/bar';
+`,
+            errors: [
+                {
+                    message:
+                        'Path should be \'src/frontend/modules/orangejuice/bar\'',
                 },
             ],
         },
