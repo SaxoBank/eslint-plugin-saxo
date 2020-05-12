@@ -59,10 +59,10 @@ import { sampleOtherComponent } from 'src/frontend/components/sampleModule/compo
             errors: [
                 {
                     message:
-                        "Path should be 'src/frontend/modules/otherModule/Component'",
+                        'Path should be \'src/frontend/modules/otherModule/Component\'',
                 },
                 {
-                    message: "Path should be './'",
+                    message: 'Path should be \'./\'',
                 },
             ],
         },
@@ -85,11 +85,11 @@ import component from 'src/frontend/modules/otherModule/component';
 `,
             errors: [
                 {
-                    message: "Path should be '../../tablet/Component'",
+                    message: 'Path should be \'../../tablet/Component\'',
                 },
                 {
                     message:
-                        "Path should be 'src/frontend/modules/otherModule/component'",
+                        'Path should be \'src/frontend/modules/otherModule/component\'',
                 },
             ],
         },
@@ -112,11 +112,11 @@ import component from 'src/frontend/modules/otherModule/component';
 `,
             errors: [
                 {
-                    message: "Path should be '../../tablet/Component'",
+                    message: 'Path should be \'../../tablet/Component\'',
                 },
                 {
                     message:
-                        "Path should be 'src/frontend/modules/otherModule/component'",
+                        'Path should be \'src/frontend/modules/otherModule/component\'',
                 },
             ],
         },

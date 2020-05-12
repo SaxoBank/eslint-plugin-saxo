@@ -23,7 +23,7 @@ module.exports = {
             },
         ],
         messages: {
-            incorrectPath: "Path should be '{{expectedPath}}'",
+            incorrectPath: 'Path should be \'{{expectedPath}}\'',
         },
         fixable: true,
     },
@@ -32,8 +32,8 @@ module.exports = {
 
         return {
             ImportDeclaration(node) {
-                let cwd = context.options[0].cwd || context.getCwd();
-                let fileName = path
+                const cwd = context.options[0].cwd || context.getCwd();
+                const fileName = path
                     .relative(cwd, context.getFilename())
                     .replace(/\\/g, '/');
 
@@ -43,9 +43,9 @@ module.exports = {
                 const baseDir = dirName.split('/').slice(0, parts).join('/');
 
                 const importPath = node.source.value;
-                const resolvedImportPath = importPath.startsWith('.')
-                    ? path.join(dirName, importPath).replace(/\\/g, '/')
-                    : importPath;
+                const resolvedImportPath = importPath.startsWith('.') ?
+                    path.join(dirName, importPath).replace(/\\/g, '/') :
+                    importPath;
 
                 let expectedPath = importPath;
 
