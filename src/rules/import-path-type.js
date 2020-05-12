@@ -41,7 +41,7 @@ module.exports = {
 
                 // the base at which outside of this it should be absolute and inside it should be relative
                 const baseDir =
-                    dirName.split('/').slice(0, parts).join('/') + '/';
+                    dirName.split('/').slice(0, parts).join('/');
 
                 const importPath = node.source.value;
                 const resolvedImportPath = importPath.startsWith('.') ?
@@ -50,9 +50,12 @@ module.exports = {
 
                 let expectedPath = importPath;
 
-                if (resolvedImportPath.startsWith(baseDir)) {
-                    // should be relative
-                    if (importPath.startsWith(baseDir)) {
+                // its relative if its in the base dir exactly or a sub path
+                const shouldBeRelative = resolvedImportPath === baseDir || resolvedImportPath.startsWith(baseDir + '/');
+
+                if (shouldBeRelative) {
+                    // if the current path is absolute (so wrong)
+                    if (importPath === baseDir || importPath.startsWith(baseDir + '/')) {
                         let relativePath = path
                             .relative(dirName, resolvedImportPath)
                             .replace(/\\/g, '/');
@@ -61,10 +64,15 @@ module.exports = {
                             relativePath = `./${relativePath}`;
                         }
 
+                        // for importing a /index file like ./ it should just be '.'
+                        if (relativePath.endsWith('/')) {
+                            relativePath = relativePath.slice(0, relativePath.length - 1);
+                        }
+
                         expectedPath = relativePath;
                     }
                 } else if (
-                    !importPath.startsWith(baseDir) &&
+                    !shouldBeRelative &&
                     resolvedImportPath !== importPath
                 ) {
                     // should be absolute
