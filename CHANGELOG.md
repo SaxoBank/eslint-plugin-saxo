@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.0] - 2020-05-
+- Remove rules replaced by prettier -  jsx-conditional-indent, jsx-conditional-newline, jsx-conditional-parens, jsx-curly-spacing-opinionated
+- Rename jsx-enforce-spec-describe to enforce-spec-describe
+
 ## [1.8.0] - 2020-05-04
 - Add new import-path-type rule 
 
@@ -27,7 +31,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add clean-jest-snapshots rule
 
 ## [1.2.0] - 2018-08-20
-- Add jsx-enforce-spec-describe rule
+- Add enforce-spec-describe rule
 
 ## [1.1.1] - 2018-08-05
 - Fix reliance on a eslint function that was in a file that was renamed in eslint v5.2

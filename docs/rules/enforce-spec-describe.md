@@ -1,11 +1,11 @@
-# jsx-enforce-spec-describe
+# enforce-spec-describe
 
 The eslint spec describe rule enforces *.spec.* unit tests top level describe method to have first argument matching path of file under test.
 
 The rule accepts _topLevelDir_ option which allows to suggest expected fix. Example:
 
 ```json
-"saxo/jsx-enforce-spec-describe": [
+"saxo/enforce-spec-describe": [
     "error",
     {
         "topLevelDir": "Project/Source/FrontendApp/js/"
@@ -25,7 +25,7 @@ The following patterns are considered problems:
 
 ```js
 /*
-"saxo/jsx-enforce-spec-describe": [
+"saxo/enforce-spec-describe": [
     "error",
     {
         "topLevelDir": "SampleProject/Source/SampleProject.App/js/"
@@ -56,7 +56,7 @@ The following patterns are not considered warnings:
 
 ```js
 /*
-"saxo/jsx-enforce-spec-describe": [
+"saxo/enforce-spec-describe": [
     "error",
     {
         "topLevelDir": "SampleProject/Source/SampleProject.App/js/"

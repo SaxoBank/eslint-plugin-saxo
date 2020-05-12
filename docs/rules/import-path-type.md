@@ -23,7 +23,7 @@ The following patterns are considered problems:
 
 ```js
 /*
-"saxo/jsx-enforce-spec-describe": [
+"saxo/enforce-spec-describe": [
     "error",
     {
       "parts": 4,
@@ -44,7 +44,7 @@ The following patterns are not considered warnings:
 
 ```js
 /*
-"saxo/jsx-enforce-spec-describe": [
+"saxo/enforce-spec-describe": [
     "error",
     {
       "parts": 4,
