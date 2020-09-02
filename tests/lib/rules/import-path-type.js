@@ -8,7 +8,7 @@ const { RuleTester } = require('eslint');
 const rule = require('../../../src/rules/import-path-type');
 const parserOptions = {
     sourceType: 'module',
-    ecmaVersion: 6,
+    ecmaVersion: 2020,
     ecmaFeatures: {
         jsx: true,
     },
@@ -73,6 +73,19 @@ import component from 'src/frontend/modules/otherModule/component';
             ],
             code: `
 import bar from 'src/frontend/modules/orangejuice/bar';
+`,
+        },
+        {
+            filename:
+                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\orange\\foo.js',
+            options: [
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
+            ],
+            code: `
+import(/* webpackChunkName: "chunk", webpackPreload: true */ './bar');
 `,
         },
     ],
@@ -223,6 +236,25 @@ import * as otherComponent from '.';
                 message:
                     'Path should be \'.\'',
 
+            }],
+        },
+        {
+            filename:
+                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\orange\\foo.js',
+            options: [
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
+            ],
+            code: `
+import(/* webpackChunkName: "chunk", webpackPreload: true */ 'src/frontend/modules/orange/bar');
+`,
+            output: `
+import(/* webpackChunkName: "chunk", webpackPreload: true */ './bar');
+`,
+            errors: [{
+                message: 'Path should be \'./bar\'',
             }],
         }],
 });
