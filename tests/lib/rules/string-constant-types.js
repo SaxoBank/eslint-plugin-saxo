@@ -8,7 +8,10 @@ const parserOptions = {
     ecmaVersion: 6,
 };
 
-const ruleTester = new RuleTester({ parserOptions, parser: 'babel-eslint' });
+const ruleTester = new RuleTester({
+    parserOptions,
+    parser: require.resolve('babel-eslint'),
+});
 ruleTester.run('string-constant-types', rule, {
     valid: [{
         code:
