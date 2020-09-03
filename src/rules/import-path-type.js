@@ -31,7 +31,7 @@ module.exports = {
         const parts = context.options[0].parts;
 
         return {
-            ImportDeclaration(node) {
+            ':matches(ImportDeclaration, ImportExpression)'(node) {
                 const cwd = context.options[0].cwd || context.getCwd();
                 const fileName = path
                     .relative(cwd, context.getFilename())

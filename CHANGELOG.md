@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+# [1.8.3]
+- Make import-path-type apply to dynamic imports
+
 ## [1.8.2] - 2020-05-12
 - Fix bug in import-path-type if importing from a directory index file
 
