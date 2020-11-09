@@ -88,6 +88,19 @@ import bar from 'src/frontend/modules/orangejuice/bar';
 import(/* webpackChunkName: "chunk", webpackPreload: true */ './bar');
 `,
         },
+        {
+            filename:
+                'C:\\Projects\\SampleProject\\src\\frontend\\modules\\orange\\foo.js',
+            options: [
+                {
+                    cwd: 'C:\\Projects\\SampleProject',
+                    parts: 4,
+                },
+            ],
+            code: `
+import(variableIdentifier);
+`,
+        },
     ],
     invalid: [
         {

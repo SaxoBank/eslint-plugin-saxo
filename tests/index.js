@@ -13,7 +13,7 @@ describe('all rule files should be exported by the plugin', () => {
         rules.forEach((ruleName) => {
             assert.equal(
                 plugin.rules[ruleName],
-                // eslint-disable-next-line global-require, import/no-dynamic-require
+                // eslint-disable-next-line global-require
                 require(path.join('../src/rules', ruleName)),
                 `rule ${ruleName} is not exported`);
         });
