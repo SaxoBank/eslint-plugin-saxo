@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+# [1.8.4]
+- Fix import-path-type not to error on non-literal dynamic imports
+
 # [1.8.3]
 - Make import-path-type apply to dynamic imports
 
